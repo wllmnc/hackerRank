@@ -37,11 +37,8 @@ protected:
    }
 };
 
-class D 
+class D: public A, public B, public C
 {
-    friend class A;
-    friend class B;
-    friend class C;
 	int val;
 	public:
 		//Initially val is 1
@@ -54,13 +51,23 @@ class D
 		 //Implement this function
 		 void update_val(int new_val)
 		 {
-             A a=new A;
-             B b=new B;
-             C c=new C;
-             a::func(new_val);
-             b::func(new_val);
-             c::func(new_val);
-			
+             while(new_val>1){
+                 
+                if (new_val%2==0){
+                    this->A::func(val);
+                    new_val=new_val/2;
+                }else{
+                    if (new_val%3==0){
+                        this->B::func(val);
+                        new_val=new_val/3;
+                        }else{
+                            if (new_val%5==0){
+                                this->C::func(val);
+                                new_val=new_val/5;
+                            }
+                         }
+                    }
+             };
 		 }
 		 //For Checking Purpose
 		 void check(int); //Do not delete this line.
