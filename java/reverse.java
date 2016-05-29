@@ -8,15 +8,15 @@ public class Solution {
         Scanner sc=new Scanner(System.in);
         String A=sc.next();
         /* Enter your code here. Print output to STDOUT. */
-        String B=A.substring(A.length()/2);
-        String C=A.substring(0,A.length()/2);
-        ini=0
-        if(B.length()>C.length())
-            ini=1
-        String reverse="";
-        for(ini,ini<(B.length();ini++)
-            Reverse
-        System.out.println(C);
+        String Ans="Yes";
+        for(int i=0;i<(A.length()/2);i++){
+            if (A.charAt(i)!=A.charAt(A.length()-(i+1)))
+            {
+                Ans="No";
+                break;
+            }
+        }
+        System.out.println(Ans);
         
     }
 }
