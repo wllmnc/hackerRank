@@ -1,0 +1,10 @@
+#!/bin/python
+#https://www.hackerrank.com/challenges/camelcase
+import sys
+
+
+s = raw_input().strip()
+cont=1
+for i in xrange(len(s)):
+    cont=cont+ (1 if ord(s[i])>64 and ord(s[i])<91 else 0)
+print cont
