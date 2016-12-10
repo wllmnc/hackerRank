@@ -12,6 +12,7 @@ int main() {
     float     e;
     double    f;  
     cin >> a >> b >> c >> d >> e >> f;
-    cout << a << endl << b << endl << c << endl << d << endl << e << endl << f;
+    cout << a << endl << b << endl << c << endl << d << endl;
+    printf("%.3f\n%lf\n",e,f);
     return 0;
 }
