@@ -42,58 +42,44 @@ int main(){
     int q;
     cin >> q;
     for(int a0 = 0; a0 < q; a0++){
-        long x;
+        int x;
         int *point;
-        long size=0;
-        long itemsCount=0;
-        cin >> x;        
-        long count=0;
+        int size=0;
+        int itemsCount=0;
+        cin >> x;     
         bool first1=false;
         bool first0=false;        
-        /*for( int i =bitset< 64 >( x ).to_string().length()-1; i>=0; --i)
-            if ((x & (1 << i) ) && !first1){
+        string binary=bitset< 64 >( x ).to_string();
+        for( int i =0; i<binary.length();i++){            
+            if (binary[i]=='1' && !first1){
                 first1=true;            
-        }else{
+            }else{
                 if (first1){
                     if (!first0){
-                        if (!(x & (1 << i) )){
+                        if (binary[i]=='0'){
                             first0=true;  
-                            itemsCount++;
-                            size=i+1;
+                            itemsCount++;  
+                            size=binary.length()-i;
                             point = (int *)malloc(size*sizeof(int));
                             point[itemsCount-1]=0;
                         }
                     }else{
                         if(first0){
-                            
-                            count += (x & (1 << i) ? 0 : 1);
                             itemsCount++; 
-                            point[itemsCount-1]=(x & (1 << i) ? 1 : 0);
+                            point[itemsCount-1]=(binary[i]=='1'?1:0);
                         }
                     }
                 }
             }
-       long discount=0; 
-       cout << "size" << size<< endl;
+        }
+       int discount=0; 
        for(int i=0;i<size;i++)
        {
-           cout << ((point[i])?1:0) <<" "<< pow(2,size-1-i)<< " ";
-           discount+=((long)(point[i])?pow(2,size-1-i):0);
+           discount+=((point[i]==1)?pow(2,size-1-i):0);
        }
-        cout << "discount " << discount << endl;
-        cout << "IC " << itemsCount << endl;
-        long npossibles=pow(2,itemsCount)-1;
-        cout << "posibles " << npossibles << endl;        
-        cout << npossibles- discount << endl;        */
-        int count2=0;
-        for (int i=0;i<x;i++)
-        {
-            if(((i)^x)>x){
-                count2++;
-               // cout << i << endl;
-            }
-        }
-        cout << count2 << endl;
+        int npossibles=pow(2,itemsCount)-1;   
+        cout << npossibles- discount << endl;       
+
     }
     return 0;
 }
