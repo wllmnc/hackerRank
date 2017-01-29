@@ -1,0 +1,57 @@
+//https://www.hackerrank.com/challenges/leonardo-and-prime
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+unsigned long long int gcd(unsigned long long int a, unsigned long long int b)
+{
+	while (b) {
+		unsigned long long int t = b;
+		b = a % b;
+		a = t;
+	}
+	return a;
+}
+
+unsigned int max_unique_primes(unsigned long long int n)
+{
+	unsigned int count;
+	unsigned long long int prod;
+	unsigned long long int prim;
+	if (n < 2)
+		return 0;
+	prod = 2;
+	count = 1;
+	for (prim = 3; prod * prim <= n; prim += 2) {
+		if (gcd(prod, prim) == 1) {
+			prod *= prim;
+			count++;
+		}
+	}
+	return count;
+}
+
+int main(void)
+{
+	unsigned int q;
+    cin >> q;
+
+	while (q--){
+		unsigned long long int n;
+        cin >> n;
+        cout << max_unique_primes(n) << endl;
+	}
+	return 0;
+}
+
