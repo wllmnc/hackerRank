@@ -1,15 +1,23 @@
-#https://www.hackerrank.com/contests/w29/challenges/big-sorting
 #!/bin/python
-
+import collections
 import sys
+
+d = {}
 
 
 n = int(raw_input().strip())
-unsorted = []
 unsorted_i = 0
 for unsorted_i in xrange(n):
-    unsorted.append(int(raw_input().strip()))
-unsorted.sort()
-for item in unsorted:
-    print item
+    value=int(raw_input().strip())
+    if value in d:
+        d[value]=d[value]+1
+    else:
+        d[value]=1    
+items=d.keys()
+items.sort()
+for k in items:
+    v=d[k]
+    while v:
+        print k
+        v=v-1
 # your code goes here
