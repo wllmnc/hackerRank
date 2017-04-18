@@ -1,3 +1,4 @@
+    //https://www.hackerrank.com/challenges/java-if-else
     import java.io.*;
     import java.util.*;
     import java.text.*;
@@ -16,10 +17,10 @@
             }
             else{
               if(n>=2 && n<=5)
-                ans = "Weird";
+                ans = "Not Weird";
               else
                   if(n>=6 && n<=20)
-                    ans = "Not Weird";
+                    ans = "Weird";
                   else
                     if(n>=20)
                         ans = "Not Weird";
