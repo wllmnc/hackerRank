@@ -1,0 +1,10 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+#https://www.hackerrank.com/challenges/minimum-loss
+n,arr_=int(raw_input()),map(int,raw_input().strip().split(" "))
+dic={arr_[i]:i for i in xrange(n)}
+arr_.sort()
+min_,prev_=arr_[n-1]-arr_[0],arr_[0]
+for i in xrange(1,n):
+    min_= (arr_[i]-prev_) if (arr_[i]-prev_)<min_ and dic[arr_[i]]<dic[prev_] else min_
+    prev_=arr_[i]
+print min_
