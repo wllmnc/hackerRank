@@ -1,0 +1,102 @@
+body {
+margin: 0;
+border: 0;
+}
+
+#canvas{
+    width: 100%;
+    height: 80%;
+    overflow: scroll;
+    position:absolute;
+   
+}
+
+#build{
+    width: 100%;
+    height: 80%;
+    background: grey;
+    position:absolute;
+}
+
+.down-iddle
+{
+height:18px;
+width:18px;
+background-image: url("../images/floor_controls/down_iddle.jpg");
+background-size: 18px 18px;
+background-repeat: no-repeat;
+background-position: right top;
+}
+
+.up-iddle
+{
+height:18px;
+width:18px;
+background-image: url("../images/floor_controls/up_iddle.jpg");
+background-size: 18px 18px;
+background-repeat: no-repeat;
+background-position: right top;
+}
+
+.down-bussy
+{
+height:18px;
+width:18px;
+background-image: url("../images/floor_controls/down_bussy.jpg");
+background-size: 18px 18px;
+background-repeat: no-repeat;
+background-position: right top;
+}
+
+.status-floor-down{
+height:18px;
+width:18px;
+position: absolute;
+top: 40px;
+left: 40PX;
+}
+
+.status-floor-up{
+height:18px;
+width:18px;
+position: absolute;
+top: 20px;
+left: 40PX;
+}
+
+.up-bussy
+{
+height:18px;
+width:18px;
+background-image: url("../images/floor_controls/up_bussy.jpg");
+background-size: 18px 18px;
+background-repeat: no-repeat;
+background-position: right top;
+}
+.floor
+{
+background:#bbb;
+border:1px solid;
+width:100%;
+height:60px;
+position: absolute;
+bottom:0;
+}
+.elevator{
+background:orange;
+border:1px solid;
+width:30px;
+height:50px;
+position: absolute;
+bottom:0;
+}
+
+.open-doors{
+background:green;
+}
+.elevator-button{
+width:30px;
+}
+.elevator-thinking{
+background:yellow;
+}

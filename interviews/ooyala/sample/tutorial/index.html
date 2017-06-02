@@ -1,0 +1,74 @@
+<html>
+<head>
+<script src="static/scripts/jquery-3.2.1.min.js"></script>
+<script src="static/scripts/index.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/index.css">
+<script>
+$(function(){
+        /* Core of behavior from this client terminal which perfom as Client module*/
+	//number of floors
+	var m = getUrlParameter('m');
+	//number of elevators
+	var n = getUrlParameter('n');
+        //fixed size for each floor
+	var pos=60;
+	// control variable to validate if the server creates the admin module
+        var is_admin_online=0;
+	is_admin_online=init_admin(n,m);
+	//code to draw the floors
+	for(i=0;i<m;i++){
+		var newFloor="<div id='f_"+(i+1)+"' class='floor' style='bottom:"+(pos*i)+"'> Floor "+(i+1)+"<div id='up-"+(i+1)+"' class='up-iddle'/><div id='down-"+(i+1)+"' class='down-iddle'/><div id='f-"+(i+1)+"-status1' class='status-floor-up'/><div id='f-"+(i+1)+"-status0' class='status-floor-down'/><div>";
+		$("#build").append(newFloor);
+		}
+	$("#build").css("height",m*pos);	
+	//code to draw the elevators
+	for(i=1;i<=n;i++){
+		var newElevator="<div id='e-"+(i)+"' class='elevator' style='left:"+(pos*(i+1))+"'> E "+(i) +"<input id='et-"+(i)+"' type='text' class='elevator-button'/><input id='eb-"+(i)+"' type='button' class='elevator-button' value='go' /> </div>";
+		$("#build").append(newElevator);		
+		}
+	$("#build").css("width",((parseInt(n,10)+2)*(pos))+"px");
+        //if the admin module was charged we assign some listeners to each button for floor and panel for elevator
+        if(is_admin_online==1){
+	//listeners for buttos to ask up
+	$(".up-iddle").click(function(){
+		if(!$(this).hasClass("up-bussy")){
+			var floor=$(this).attr('id').split("-")[1];
+			$(this).addClass("up-bussy");
+			ask_elevator(floor,1);
+		}
+		});		
+	// listener for buttos to ask down
+	$(".down-iddle").click(function(){
+		if(!$(this).hasClass("down-bussy")){
+			var floor=$(this).attr('id').split("-")[1];
+			$(this).addClass("down-bussy");
+			ask_elevator(floor,0);
+		}
+		});
+	// behavior to each elevator to be updating automatically his information
+	$(".elevator").each(function(){
+		var elevator=$(this).attr("id").split("-")[1];
+		update_elevator(elevator);
+		});
+         // listener for each panel elevator button
+	 $(".elevator-button").click(function(){
+                var elevator=$(this).attr("id").split("-")[1];
+		value=$('#et-'+elevator).val();
+		var floor= parseInt(value) || 0;
+		if(floor>0 && floor<=m){
+			$("#e-"+elevator).addClass("elevator-thinking");
+                	sent_elevator_req(elevator,floor);
+		}
+                });
+
+	}		
+});
+</script>
+</head>
+<body>
+<div id="canvas">
+<div id="build">
+</div>
+</div>
+</body>
+</html>
